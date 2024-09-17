@@ -2,3 +2,13 @@ form{
     background-color: pink;
     padding: 25px;
 }
+#username{
+    height: 25px;
+}
+label [for="name"]{
+    font-style: italic;
+}
+.btn{
+    margin-top: 25px;
+    padding: 10px;
+}
