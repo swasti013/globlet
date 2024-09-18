@@ -4,7 +4,8 @@ const fruits = document.querySelector(".fruits");
    form.addEventListener("submit", function(event){
     event.preventDefault();
     //selected the input id
-    const fruitadd = document.getElementById("fruit-to-add");
+    const fruitadd = document.getElementById("fruit-to-add").value;
+    const description = document.getElementById("description").value;
     //created the li
     const list = document.createElement("li");
     /*const listtext = document.createTextNode(fruitadd.value);
@@ -21,9 +22,11 @@ const fruits = document.querySelector(".fruits");
     const edttext = document.createTextNode("Edit");
     edtbtn.appendChild(edttext);
     list.appendChild(edtbtn); */
-    
-    //easy method to write
-    list.innerHTML=fruitadd.value +"<button class='btn'>X</button><br> <button  class='edt'>Edit</button>";
+   //easy method to write
+    list.innerHTML= `${fruitadd} 
+    <p><em>${description}</em></p> 
+    <button class='btn'>X</button><br> 
+    <button  class='edt'>Edit</button> `;
     fruits.appendChild(list);
 
 })
@@ -34,9 +37,22 @@ fruits.addEventListener("click",function(event){
         fruits.removeChild(fruitdlt);
     }
     
-   
-    
-
-
 }) 
+
+const filter = document.getElementById("search");
+
+filter.addEventListener("keyup",function(event){
+    const textenterd = event.target.value.toLowerCase();
+    const fruitlist = document.getElementsByClassName('fruit');
+    for( let i=0;i<fruitlist.length;i++){
+        const currentfruit = fruitlist[i].firstChild.textContent.toLowerCase();
+        if(currentfruit.indexOf(textenterd) === -1){
+            fruitlist[i].style.display = 'none';
+        }else {
+            fruitlist[i].style.display ='flex';
+        }
+    }
+});
+
+
    
